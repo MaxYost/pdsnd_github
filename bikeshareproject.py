@@ -152,10 +152,10 @@ def trip_duration_stats(df):
     # TO DO: display mean travel time
     mean_duration=round(df['Trip Duration'].mean())
     # Minute duration in seconds
-    minute1, second1 = divmod(mean_duration, 60)
+    mean_minute, mean_second = divmod(mean_duration, 60)
     # Hour duration in minutes
-    hour1, minute1 = divmod(minute1, 60)
-    print(f"\n The average trip duration is {hour1} hour(s), {minute1} minute(s) and {second1} second(s).")
+    mean_hour, mean_minute = divmod(mean_minute, 60)
+    print(f"\n The average trip duration is {mean_hour} hour(s), {mean_minute} minute(s) and {mean_second} second(s).")
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -180,12 +180,12 @@ def user_stats(df):
 
     # TO DO: Display earliest, most recent, and most common year of birth
     if 'Birth Year' in df.columns:
-        earliest_birth_yr = int(df['Birth Year'].min())
-        print("\n The earliest birth year is:",earliest_birth_yr)
-        recent_birth_yr = int(df['Birth Year'].max())
-        print("\n The most recent birth is:",recent_birth_yr)
-        common_birth_yr = int(df['Birth Year'].mode()[0])
-        print("\n The most common birth year is:",common_birth_yr)
+        earliest_byr = int(df['Birth Year'].min())
+        print("\n The earliest birth year is:",earliest_byr)
+        recent_byr = int(df['Birth Year'].max())
+        print("\n The most recent birth is:",recent_byr)
+        common_byr = int(df['Birth Year'].mode()[0])
+        print("\n The most common birth year is:",common_byr)
     print('\nCalculating User Stats...\n')
     start_time = time.time()
 
@@ -193,6 +193,7 @@ def user_stats(df):
     print('-'*40)
 
 def display_raw_data(df):
+    """Displays raw data in increments of 5 rows"""
 
     i = 0
     raw = input("\n Would you like to view 5 rows of raw data? Type 'yes' or 'no' \n").lower()
