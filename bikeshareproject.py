@@ -193,6 +193,7 @@ def user_stats(df):
     print('-'*40)
 
 def display_raw_data(df):
+    """Displays raw data in increments of 5 rows"""
 
     i = 0
     raw = input("\n Would you like to view 5 rows of raw data? Type 'yes' or 'no' \n").lower()
